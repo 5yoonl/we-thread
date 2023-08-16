@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import Input from "../../components/Input/Input";
 
 import "./Signup.scss";
 import CtaButton from "../../components/Button/CtaButton";
+import Header from "../../components/Header/Header";
 
 const Signup = () => {
   const [userInfo, setUserInfo] = useState({
@@ -17,11 +17,6 @@ const Signup = () => {
     birthday: "",
   });
 
-  const lastPageHistory = -1;
-  const navigate = useNavigate();
-  const goBack = () => {
-    navigate(lastPageHistory);
-  };
   const handleSignupButton = () => {
     console.log("회원가입 하자");
   };
@@ -40,10 +35,7 @@ const Signup = () => {
   return (
     <Layout>
       <div className="signUp">
-        <header className="pageHeader" onClick={goBack}>
-          <img src="/images/arrow_left.png" alt="" />
-          <span>뒤로</span>
-        </header>
+        <Header />
         <article className="inputArea">
           <div className="articleTitle">회원가입</div>
           <InputSection pageTitle="기본 정보">

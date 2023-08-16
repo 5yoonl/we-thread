@@ -21,14 +21,15 @@ const Login = () => {
   };
 
   const loginAction = () => {
-    fetch("api주소", {
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({
-        userInfo,
-      }),
-    });
+    console.log("로그인 하자");
+    // fetch("api주소", {
+    //   headers: {
+    //     "Content-Type": "application/json;charset=utf-8",
+    //   },
+    //   body: JSON.stringify({
+    //     userInfo,
+    //   }),
+    // });
   };
 
   return (

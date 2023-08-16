@@ -5,17 +5,6 @@
   flex-direction: column;
   gap: 24px;
 
-  .pageHeader {
-    display: flex;
-    width: fit-content;
-    align-items: center;
-    gap: 4px;
-    padding: 8px 0;
-    font-size: 20px;
-    line-height: 28px;
-    cursor: pointer;
-  }
-
   .inputArea {
     padding: 0 24px;
     display: flex;

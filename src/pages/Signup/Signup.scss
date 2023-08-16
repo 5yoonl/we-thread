@@ -1,0 +1,66 @@
+@import "../../styles/variables.scss";
+
+.signUp {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .pageHeader {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 0;
+    font-size: 20px;
+    line-height: 28px;
+    cursor: pointer;
+  }
+
+  .inputArea {
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .articleTitle {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .inputSection {
+      .inputSectionTitle {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 8px;
+      }
+
+      .inputSectionChildtren {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    .phoneNumberInput {
+      display: flex;
+      gap: 8px;
+
+      input {
+        width: 100%;
+      }
+
+      .selectBox {
+        width: fit-content;
+        padding: 16px;
+        border: 1ox solid $grey88;
+        border-radius: 8px;
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+  }
+
+  .buttonArea {
+    padding: 0 24px 40px;
+  }
+}

@@ -1,0 +1,22 @@
+.reply {
+  display: flex;
+  width: 100%;
+  padding: 0 8px;
+  gap: 24px;
+
+  .contentSection {
+    width: 100%;
+    .replyInfo {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 4px;
+
+      .userName {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 20px;
+      }
+    }
+  }
+}

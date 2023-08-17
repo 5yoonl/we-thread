@@ -1,7 +1,7 @@
 import React from "react";
 import "./Input.scss";
 
-const Input = ({ name, type = "text", handleChange, placeholder }) => {
+const Input = ({ value, name, type = "text", handleChange, placeholder }) => {
   return (
     <input
       name={name}

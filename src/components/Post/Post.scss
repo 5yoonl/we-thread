@@ -1,8 +1,11 @@
 @import "../../styles/variables.scss";
+
 .post {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  border-bottom: 1px solid $grey90;
+  padding-bottom: 24px;
 
   header {
     display: flex;
@@ -65,5 +68,29 @@
     display: flex;
     gap: 12px;
     color: $grey60;
+  }
+}
+
+.replyListBox {
+  .createReply {
+    display: flex;
+    gap: 8px;
+
+    input {
+      width: 100%;
+    }
+
+    button {
+      border-radius: 4px;
+      background-color: white;
+      border: 1px solid $grey60;
+      padding: 17px 21px;
+      min-width: 96px;
+      font-size: 14px;
+    }
+  }
+
+  .replyList {
+    margin-top: 24px;
   }
 }

@@ -5,16 +5,25 @@ import Header from "../../components/Header/Header";
 import "./PostList.scss";
 const PostList = () => {
   const [postList, setPostList] = useState([]);
+  const [extendPostId, setExtendPostId] = useState(0);
+
   useEffect(() => {
     fetch("/data/listData.json")
       .then((response) => response.json())
       .then((result) => setPostList(result.data));
   }, []);
+
   return (
     <Layout>
       <div className="postList">
         {postList.map((post) => {
-          return <Post postData={post} />;
+          return (
+            <Post
+              postData={post}
+              handlePostExtend={setExtendPostId}
+              extendPostId={extendPostId}
+            />
+          );
         })}
       </div>
     </Layout>

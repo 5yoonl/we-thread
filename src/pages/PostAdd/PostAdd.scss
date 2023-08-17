@@ -1,0 +1,48 @@
+@import "../../styles/variables.scss";
+.postAdd {
+  display: flex;
+  gap: 24px;
+  padding: 40px 24px;
+
+  .contentArea {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .userName {
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 15px 16px;
+      resize: none;
+      min-height: 654px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid $grey88;
+      transition: all 300ms ease;
+
+      &:focus {
+        outline: none;
+        border: 1px solid black;
+      }
+
+      ::placeholder {
+        color: $grey60;
+      }
+    }
+
+    .actionButtonArea {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      button {
+        width: 120px;
+      }
+    }
+  }
+}

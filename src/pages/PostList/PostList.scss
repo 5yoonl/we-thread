@@ -4,3 +4,15 @@
   flex-direction: column;
   gap: 24px;
 }
+.postAddButton {
+  width: 100%;
+  position: absolute;
+  bottom: 40px;
+  padding-right: 24px;
+  text-align: right;
+  background-color: white;
+
+  button {
+    width: 120px;
+  }
+}

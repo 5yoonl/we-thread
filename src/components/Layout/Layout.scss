@@ -6,12 +6,12 @@
   width: 100vw;
   min-height: 100vh;
   background-color: $grey98;
-
   .contentsArea {
     width: 576px;
     min-height: 80vh;
     background-color: white;
     border-radius: 16px;
     border: 1px solid $grey88;
+    position: relative;
   }
 }

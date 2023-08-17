@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Input from "../Input/Input";
 import Reply from "../Reply/Reply";
+import ProfileImage from "../ProfileImage/ProfileImage";
 import "./Post.scss";
 import { dateFormatter } from "../../utils/dateFormatter";
-import ProfileImage from "../ProfileImage/ProfileImage";
 const Post = ({ postData, extendPostId, handlePostExtend }) => {
   const {
     postId,
@@ -21,13 +21,13 @@ const Post = ({ postData, extendPostId, handlePostExtend }) => {
   const [replyValue, setReplyValue] = useState("");
   const formattedDate = dateFormatter(createdAt);
 
-  const isExpend = extendPostId === postId;
+  const isExtend = extendPostId === postId;
 
   useEffect(() => {
-    if (!isExpend) {
+    if (!isExtend) {
       setReplyValue("");
     }
-  }, [isExpend]);
+  }, [isExtend]);
 
   const handleExpend = () => {
     const isClickSamePost = extendPostId === postId;
@@ -36,7 +36,9 @@ const Post = ({ postData, extendPostId, handlePostExtend }) => {
       handlePostExtend(0);
     }
   };
-
+  const handleLikeAction = () => {
+    console.log("좋아요를 누르자");
+  };
   const handleReplySubmit = () => {
     console.log(replyValue);
   };
@@ -62,8 +64,8 @@ const Post = ({ postData, extendPostId, handlePostExtend }) => {
         <div className="postContent" onClick={handleExpend}>
           {content}
         </div>
-        <div className="countings" onClick={handleExpend}>
-          <div>좋아요 {likeCount}</div>
+        <div className="countings">
+          <div onClick={handleLikeAction}>좋아요 {likeCount}</div>
           <div>댓글 {commentsCount}</div>
         </div>
         <div className="likeAction">
@@ -73,7 +75,7 @@ const Post = ({ postData, extendPostId, handlePostExtend }) => {
           />
         </div>
       </div>
-      {isExpend && (
+      {isExtend && (
         <div className="replyListBox">
           <div className="createReply">
             <Input

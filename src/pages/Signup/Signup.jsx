@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import Input from "../../components/Input/Input";
-
-import "./Signup.scss";
 import CtaButton from "../../components/Button/CtaButton";
 import Header from "../../components/Header/Header";
+import "./Signup.scss";
+import { BASE_API_URL } from "../../utils/config";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
@@ -16,9 +18,29 @@ const Signup = () => {
     lastNumber: "",
     birthday: "",
   });
-
   const handleSignupButton = () => {
-    console.log("회원가입 하자");
+    fetch(`${BASE_API_URL}users/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: userInfo.email,
+        password: userInfo.password,
+        nickname: userInfo.nickname,
+        phoneNumber: `${userInfo.firstNumber}${userInfo.firstNumber}`,
+      }),
+    })
+      .then((res) => {
+        console.log(res);
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((result) => {
+        console.log(result);
+        if (result.message === "user is created") {
+          navigate("/sign-up-success");
+        }
+      });
   };
 
   const handleSignupInput = (event) => {
@@ -46,11 +68,13 @@ const Signup = () => {
             />
             <Input
               name="password"
+              type="password"
               placeholder="비밀번호"
               handleChange={(e) => handleSignupInput(e)}
             />
             <Input
               name="checkPassword"
+              type="password"
               placeholder="비밀번호 확인"
               handleChange={(e) => handleSignupInput(e)}
             />

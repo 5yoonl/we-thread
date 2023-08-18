@@ -1,16 +1,31 @@
 import React, { useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
-import "./PostAdd.scss";
 import CtaButton from "../../components/Button/CtaButton";
+import "./PostAdd.scss";
 import { useNavigate } from "react-router-dom";
+import { BASE_API_URL } from "../../utils/config";
 
 const PostAdd = () => {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   const [postInputValue, setPostInputValue] = useState("");
   const lastPageHistory = -1;
   const createPost = () => {
-    console.log("게시글 만들자");
+    fetch(`${BASE_API_URL}posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+      body: JSON.stringify({
+        content: postInputValue,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        navigate("/post-list");
+      }
+    });
   };
 
   const goBack = () => {

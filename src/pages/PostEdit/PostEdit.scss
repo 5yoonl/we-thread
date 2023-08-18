@@ -1,12 +1,14 @@
 @import "../../styles/variables.scss";
-.postAdd {
+.postEdit {
   display: flex;
   gap: 24px;
+  min-height: 80vh;
   padding: 40px 24px;
 
   .contentArea {
     width: 100%;
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
     gap: 8px;
 

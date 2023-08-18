@@ -1,43 +1,70 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
-import "./PostAdd.scss";
 import CtaButton from "../../components/Button/CtaButton";
-import { useNavigate } from "react-router-dom";
+import { BASE_API_URL } from "../../utils/config";
+import "./PostEdit.scss";
 
 const PostAdd = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [postInputValue, setPostInputValue] = useState("");
+  const [postData, setPostData] = useState({
+    content: "",
+    nickname: "",
+    profileImage: "",
+  });
   const lastPageHistory = -1;
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // fetch logic for default Value
+    fetch(`${BASE_API_URL}posts/${id}`, {
+      headers: { "Content-Type": "application/json", authorization: token },
+    })
+      .then((res) => res.json())
+      .then(({ data }) => {
+        const { content, nickname, profileImage } = data;
+
+        setPostData({
+          content,
+          nickname,
+          profileImage,
+        });
+      });
   }, []);
 
-  const createEdit = () => {
-    console.log("게시글 수정하자!");
+  const editPost = () => {
+    fetch(`${BASE_API_URL}posts/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json", authorization: token },
+      body: JSON.stringify({ content }),
+    }).then((res) => res.ok && navigate("/post-list"));
   };
 
   const goBack = () => {
+    if (!window.confirm("수정을 취소하시겠습니까?")) return;
+
     navigate(lastPageHistory);
   };
 
-  const handleTextChange = (value) => {
-    setPostInputValue(value);
+  const handleTextChange = (content) => {
+    setPostData((prev) => ({ ...prev, content }));
   };
+
+  const { content, profileImage, nickname } = postData;
 
   return (
     <Layout>
-      <div className="postAdd">
+      <div className="postEdit">
         <div className="profileImageBox">
-          <ProfileImage src="/images/elon.jpeg" />
+          <ProfileImage src={profileImage || "/images/elon.jpeg"} />
         </div>
         <div className="contentArea">
-          <div className="userName">wecode</div>
+          <div className="userName">{nickname}</div>
           <div className="textArea">
             <textarea
               placeholder="스레드를 시작하세요"
-              defaultValue={postInputValue}
+              defaultValue={content}
               cols="30"
               rows="10"
               onChange={(e) => handleTextChange(e.target.value)}
@@ -45,7 +72,7 @@ const PostAdd = () => {
           </div>
           <div className="actionButtonArea">
             <CtaButton buttonText="취소" handleButtonAction={goBack} />
-            <CtaButton buttonText="게시" handleButtonAction={createEdit} />
+            <CtaButton buttonText="게시" handleButtonAction={editPost} />
           </div>
         </div>
       </div>

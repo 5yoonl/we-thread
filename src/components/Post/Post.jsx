@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../Input/Input";
 import Reply from "../Reply/Reply";
 import ProfileImage from "../ProfileImage/ProfileImage";
-import "./Post.scss";
 import { dateFormatter } from "../../utils/dateFormatter";
-const Post = ({ postData, extendPostId, handlePostExtend }) => {
+import "./Post.scss";
+
+const Post = ({
+  postData,
+  extendPostId,
+  handlePostExtend,
+  handlePostDelete,
+}) => {
   const {
     postId,
     userName,
@@ -17,11 +24,13 @@ const Post = ({ postData, extendPostId, handlePostExtend }) => {
     comments,
     createdAt,
   } = postData;
-
+  const navigate = useNavigate();
   const [replyValue, setReplyValue] = useState("");
   const formattedDate = dateFormatter(createdAt);
 
   const isExtend = extendPostId === postId;
+  const parsedIsLike = Boolean(parseInt(isLiked));
+  const parsedIsMyPost = Boolean(parseInt(isMyPost));
 
   useEffect(() => {
     if (!isExtend) {
@@ -36,12 +45,19 @@ const Post = ({ postData, extendPostId, handlePostExtend }) => {
       handlePostExtend(0);
     }
   };
+
   const handleLikeAction = () => {
     console.log("좋아요를 누르자");
   };
+
   const handleReplySubmit = () => {
     console.log(replyValue);
   };
+
+  const handleEdit = () => {
+    navigate(`/post-edit/${postId}`);
+  };
+
   return (
     <>
       <div className="post">
@@ -53,10 +69,14 @@ const Post = ({ postData, extendPostId, handlePostExtend }) => {
           </div>
           <div className="postInfo">
             <div className="createdAt">{formattedDate}</div>
-            {isMyPost && (
+            {parsedIsMyPost && (
               <>
-                <div className="options delete">삭제</div>
-                <div className="options">수정</div>
+                <div className="options delete" onClick={handlePostDelete}>
+                  삭제
+                </div>
+                <div className="options" onClick={handleEdit}>
+                  수정
+                </div>
               </>
             )}
           </div>
@@ -70,7 +90,7 @@ const Post = ({ postData, extendPostId, handlePostExtend }) => {
         </div>
         <div className="likeAction">
           <img
-            src={`/images/${isLiked ? "filled_heart" : "heart"}.png`}
+            src={`/images/${parsedIsLike ? "filled_heart" : "heart"}.png`}
             alt="heart"
           />
         </div>

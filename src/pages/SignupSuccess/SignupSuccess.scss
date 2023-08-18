@@ -1,0 +1,48 @@
+@import "../../styles/variables.scss";
+
+.signupSuccess {
+  width: 100%;
+  height: 644px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .thumbnail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    .thumbnailSymbol {
+      width: 136px;
+      height: 136px;
+    }
+
+    .thumbnailText {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .mainText {
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 800;
+      }
+
+      .subText {
+        font-size: 20px;
+        line-height: 28px;
+        color: $grey60;
+      }
+    }
+  }
+}
+
+.actionButton {
+  width: 100%;
+  position: absolute;
+  padding: 0 24px;
+  bottom: 40px;
+}

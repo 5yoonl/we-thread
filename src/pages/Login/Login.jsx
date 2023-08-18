@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import "./Login.scss";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import Input from "../../components/Input/Input";
-import { Link } from "react-router-dom";
 import CtaButton from "../../components/Button/CtaButton";
+import { BASE_API_URL } from "../../utils/config";
+import "./Login.scss";
 const Login = () => {
+  const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
     email: "",
     password: "",
   });
-
   const isButtonActive =
     userInfo.email.includes("@") &&
     userInfo.email.includes(".com") &&
@@ -20,16 +21,27 @@ const Login = () => {
     setUserInfo((prev) => ({ ...prev, [name]: value }));
   };
 
+  const loginPromise = () => {
+    return fetch(`${BASE_API_URL}users/signin`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userInfo),
+    });
+  };
+
   const loginAction = () => {
-    console.log("로그인 하자");
-    // fetch("api주소", {
-    //   headers: {
-    //     "Content-Type": "application/json;charset=utf-8",
-    //   },
-    //   body: JSON.stringify({
-    //     userInfo,
-    //   }),
-    // });
+    loginPromise()
+      .then((response) => {
+        return response.json();
+      })
+      .then((result) => {
+        console.log(result);
+        const { accessToken } = result;
+        if (accessToken) {
+          localStorage.setItem("token", accessToken);
+          navigate("/post-list");
+        }
+      });
   };
 
   return (

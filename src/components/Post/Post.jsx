@@ -47,11 +47,11 @@ const Post = ({
   };
 
   const handleLikeAction = () => {
-    console.log("좋아요를 누르자");
+    // console.log("좋아요를 누르자");
   };
 
   const handleReplySubmit = () => {
-    console.log(replyValue);
+    // console.log(replyValue);
   };
 
   const handleEdit = () => {

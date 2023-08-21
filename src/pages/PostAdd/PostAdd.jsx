@@ -16,7 +16,8 @@ const PostAdd = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: token,
+        authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTY5MjMzNjMxOSwiZXhwIjoxNjkzMTEzOTE5fQ.mi8XGk0asdZAnY5ZHdV5lFiv83PKQ0agBjSfLIBx65U",
       },
       body: JSON.stringify({
         content: postInputValue,

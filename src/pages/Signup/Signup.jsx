@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import Input from "../../components/Input/Input";
 import CtaButton from "../../components/Button/CtaButton";
 import Header from "../../components/Header/Header";
-import "./Signup.scss";
 import { BASE_API_URL } from "../../utils/config";
-import { useNavigate } from "react-router-dom";
+import "./Signup.scss";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ const Signup = () => {
     lastNumber: "",
     birthday: "",
   });
+
   const handleSignupButton = () => {
     fetch(`${BASE_API_URL}users/signup`, {
       method: "POST",
@@ -30,13 +31,11 @@ const Signup = () => {
       }),
     })
       .then((res) => {
-        console.log(res);
         if (res.ok) {
           return res.json();
         }
       })
       .then((result) => {
-        console.log(result);
         if (result.message === "user is created") {
           navigate("/sign-up-success");
         }

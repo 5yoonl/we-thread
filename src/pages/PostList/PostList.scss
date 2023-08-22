@@ -1,14 +1,15 @@
 .postList {
-  padding: 40px 24px;
+  padding-top: 24px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  flex: 1;
+  overflow: auto;
 }
+
 .postAddButton {
   width: 100%;
-  position: absolute;
-  bottom: 40px;
-  padding-right: 24px;
+  padding-top: 24px;
   text-align: right;
   background-color: white;
 

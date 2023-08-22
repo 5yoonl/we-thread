@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
+import SignupSuccess from "./pages/SignupSuccess/SignupSuccess";
 import PostList from "./pages/PostList/PostList";
 import PostAdd from "./pages/PostAdd/PostAdd";
 import PostEdit from "./pages/PostEdit/PostEdit";
-import SignupSuccess from "./pages/SignupSuccess/SignupSuccess";
 
 const Router = () => {
   return (

@@ -1,48 +1,62 @@
 @import "../../styles/variables.scss";
+
 .postAdd {
   display: flex;
+  flex-direction: column;
   gap: 24px;
-  padding: 40px 24px;
+  height: 100%;
+  padding-top: 40px;
 
-  .contentArea {
-    width: 100%;
+  .inputContainer {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    gap: 24px;
+    flex: 1;
+    width: 100%;
+    padding-bottom: 32px;
+    border-bottom: 1px solid $grey88;
 
-    .userName {
-      font-size: 20px;
-      line-height: 24px;
-      font-weight: 700;
-    }
-
-    textarea {
+    .contentArea {
       width: 100%;
-      padding: 15px 16px;
-      resize: none;
-      min-height: 654px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: 1px solid $grey88;
-      transition: all 300ms ease;
-
-      &:focus {
-        outline: none;
-        border: 1px solid black;
-      }
-
-      ::placeholder {
-        color: $grey60;
-      }
-    }
-
-    .actionButtonArea {
       display: flex;
-      width: 100%;
-      justify-content: space-between;
-      button {
-        width: 120px;
+      flex-direction: column;
+      gap: 8px;
+
+      .userName {
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 700;
       }
+
+      .textArea {
+        width: 100%;
+        height: 100%;
+        min-height: 654px;
+        padding: 15px 16px;
+        resize: none;
+        font-size: 16px;
+        border-radius: 6px;
+        border: 1px solid $grey88;
+        transition: all 300ms ease;
+
+        &:focus {
+          outline: none;
+          border-color: black;
+        }
+
+        &::placeholder {
+          color: $grey60;
+        }
+      }
+    }
+  }
+
+  .actionButtonArea {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    button {
+      width: 120px;
     }
   }
 }

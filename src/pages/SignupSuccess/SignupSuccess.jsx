@@ -12,8 +12,8 @@ const SignupSuccess = () => {
   };
   return (
     <Layout>
-      <Header />
       <div className="signupSuccess">
+        <Header />
         <div className="thumbnail">
           <img className="thumbnailSymbol" src="/images/circle.png" alt="" />
           <div className="thumbnailText">
@@ -21,12 +21,7 @@ const SignupSuccess = () => {
             <div className="subText">이제 로그인 해주세요</div>
           </div>
         </div>
-      </div>
-      <div className="actionButton">
-        <CtaButton
-          buttonText="확인"
-          handleButtonAction={handleSignupSuccessButton}
-        />
+        <CtaButton buttonText="확인" onClick={handleSignupSuccessButton} />
       </div>
     </Layout>
   );

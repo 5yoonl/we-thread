@@ -1,25 +1,29 @@
 import React from "react";
 import ProfileImage from "../ProfileImage/ProfileImage";
-import "./Reply.scss";
 import { dateFormatter } from "../../utils/dateFormatter";
+import "./Reply.scss";
+
 const Reply = ({ replyData }) => {
-  const { comment, commentId, userName, isMyReply, createdAt } = replyData;
+  const { comment, userName, isMyReply, createdAt } = replyData;
   const formmatedDate = dateFormatter(createdAt);
 
   return (
     <div className="reply">
-      <div className="profileImageBox">
-        <ProfileImage type="small" src="/images/elon.jpeg" />
-      </div>
+      <ProfileImage type="small" src="/images/elon.jpeg" />
       <div className="contentSection">
         <div className="replyInfo">
           <span className="userName">{userName}</span>
-          <span>
-            {formmatedDate}
-            {isMyReply && <span>삭제 | 수정</span>}
-          </span>
+          <div className="replyEditWrapper">
+            <span className="date">{formmatedDate}</span>
+            {isMyReply && (
+              <>
+                <span className="delete">삭제</span>
+                <span className="edit">수정</span>
+              </>
+            )}
+          </div>
         </div>
-        <div className="content">{comment}</div>
+        <p className="content">{comment}</p>
       </div>
     </div>
   );

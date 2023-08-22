@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .reply {
   display: flex;
   width: 100%;
@@ -6,6 +8,7 @@
 
   .contentSection {
     width: 100%;
+
     .replyInfo {
       display: flex;
       width: 100%;
@@ -16,6 +19,24 @@
         font-size: 16px;
         font-weight: 700;
         line-height: 20px;
+      }
+
+      .replyEditWrapper {
+        display: flex;
+        gap: 12px;
+
+        .date {
+          color: $grey60;
+        }
+
+        .delete {
+          color: red;
+          cursor: pointer;
+        }
+
+        .edit {
+          cursor: pointer;
+        }
       }
     }
   }

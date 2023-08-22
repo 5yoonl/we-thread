@@ -9,9 +9,12 @@
   background-color: $grey98;
 
   .contentsArea {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     width: 576px;
-    min-height: 80vh;
+    min-height: 844px;
+    max-height: 80vh;
+    padding: 0px 24px 40px;
     background-color: white;
     border-radius: 16px;
     border: 1px solid $grey88;

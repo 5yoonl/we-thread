@@ -1,11 +1,11 @@
 import React from "react";
 import "./CtaButton.scss";
 
-const CtaButton = ({ handleButtonAction, buttonText, disabled }) => {
+const CtaButton = ({ buttonText, variant, disabled, onClick }) => {
   return (
     <button
-      className="ctaButton"
-      onClick={handleButtonAction}
+      className={`ctaButton ${variant ?? ""}`}
+      onClick={onClick}
       disabled={disabled}
     >
       {buttonText}

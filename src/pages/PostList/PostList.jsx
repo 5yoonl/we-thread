@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import Post from "../../components/Post/Post";
 import CtaButton from "../../components/Button/CtaButton";
-import "./PostList.scss";
 import { BASE_API_URL } from "../../utils/config";
+import "./PostList.scss";
 
 const PostList = () => {
   const [postList, setPostList] = useState([]);
@@ -13,7 +13,8 @@ const PostList = () => {
   const token = localStorage.getItem("token");
 
   const getPostList = async () => {
-    const response = await fetch(`${BASE_API_URL}posts/all`, {
+    const response = await fetch("/data/listData.json", {
+      // const response = await fetch(`${BASE_API_URL}posts/all`, {
       method: "GET",
       headers: {
         authorization: token,
@@ -59,7 +60,7 @@ const PostList = () => {
         ))}
       </div>
       <div className="postAddButton">
-        <CtaButton buttonText="글쓰기" handleButtonAction={goToPostAddPage} />
+        <CtaButton buttonText="글 쓰기" onClick={goToPostAddPage} />
       </div>
     </Layout>
   );

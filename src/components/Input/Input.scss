@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-input {
+.input {
   background-color: white;
   border: 1px solid $grey88;
   border-radius: 6px;
@@ -16,7 +16,7 @@ input {
     border: 1px solid black;
   }
 
-  ::placeholder {
+  &::placeholder {
     color: $grey60;
   }
 }

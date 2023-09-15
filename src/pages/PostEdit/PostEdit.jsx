@@ -71,8 +71,8 @@ const PostAdd = () => {
             ></textarea>
           </div>
           <div className="actionButtonArea">
-            <CtaButton buttonText="취소" handleButtonAction={goBack} />
-            <CtaButton buttonText="게시" handleButtonAction={editPost} />
+            <CtaButton buttonText="취소" onClick={goBack} />
+            <CtaButton buttonText="게시" onClick={editPost} />
           </div>
         </div>
       </div>

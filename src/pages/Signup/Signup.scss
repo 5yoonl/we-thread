@@ -3,31 +3,17 @@
 .signUp {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  flex: 1;
 
   .inputArea {
-    padding: 0 24px;
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: 24px;
 
     .articleTitle {
       font-size: 24px;
       font-weight: 800;
-    }
-
-    .inputSection {
-      .inputSectionTitle {
-        font-size: 16px;
-        line-height: 22px;
-        margin-bottom: 8px;
-      }
-
-      .inputSectionChildtren {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
     }
 
     .phoneNumberInput {
@@ -47,9 +33,5 @@
         line-height: 22px;
       }
     }
-  }
-
-  .buttonArea {
-    padding: 0 24px 40px;
   }
 }

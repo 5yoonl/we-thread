@@ -2,11 +2,10 @@
 
 .ctaButton {
   width: 100%;
-  padding: 22px 0;
-  margin-top: 8px;
+  height: 56px;
   background-color: $blue;
   border-radius: 6px;
-  border: none;
+  border: 1px solid transparent;
   color: white;
   font-size: 18px;
   font-weight: 800;
@@ -19,5 +18,21 @@
 
   &:disabled {
     background-color: $grey80;
+  }
+
+  &.whiteBg {
+    background-color: white;
+    color: $blue;
+    border-color: $blue;
+
+    &:hover {
+      color: $navy;
+      border-color: $navy;
+    }
+
+    &:disabled {
+      color: $grey60;
+      border-color: $grey80;
+    }
   }
 }

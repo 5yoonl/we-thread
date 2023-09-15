@@ -64,7 +64,6 @@ const Post = ({
         <header>
           <div className="userInfo">
             <ProfileImage src={profileImage} />
-
             <div className="userName">{userName}</div>
           </div>
           <div className="postInfo">
@@ -99,7 +98,7 @@ const Post = ({
         <div className="replyListBox">
           <div className="createReply">
             <Input
-              placeholder="댓글을 작성하세요"
+              placeholder="댓글을 작성해 주세요."
               name="reply"
               value={replyValue}
               handleChange={(e) => {
@@ -109,9 +108,9 @@ const Post = ({
             <button onClick={handleReplySubmit}>댓글 게시</button>
           </div>
           <div className="replyList">
-            {comments.map((comment) => {
-              return <Reply replyData={comment} />;
-            })}
+            {comments.map((comment) => (
+              <Reply key={comment.id} replyData={comment} />
+            ))}
           </div>
         </div>
       )}

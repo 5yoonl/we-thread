@@ -27,14 +27,14 @@ const Login = () => {
   const isUserInfoValid = EMAIL_REGEX.test(email) && password.length >= 5;
 
   const handleLoginInput = (e) => {
-    e.preventDefault();
-
     const { name, value } = e.target;
     setUserInfo((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleLogin = () => {
-    fetch(`${BASE_API_URL}users/signin`, {
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    fetch(`${BASE_API_URL}users/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userInfo),
@@ -56,7 +56,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <form className="login" onChange={handleLoginInput}>
+      <form className="login" onSubmit={handleLogin}>
         <section className="logoSection">
           <div className="symbol">
             <img src="/images/symbol.png" alt="wecode symbol" />
@@ -65,15 +65,11 @@ const Login = () => {
             <img src="images/logo.png" alt="wercode logo" />
           </div>
         </section>
-        <InputSection>
+        <InputSection onChange={handleLoginInput}>
           <Input name="email" placeholder="이메일" />
           <Input name="password" placeholder="비밀번호" type="password" />
 
-          <CtaButton
-            buttonText="로그인"
-            disabled={!isUserInfoValid}
-            onClick={handleLogin}
-          />
+          <CtaButton buttonText="로그인" disabled={!isUserInfoValid} />
           <div className="linkButtons">
             <div className="linkBtn">
               <Link to="/sign-up">회원가입</Link>

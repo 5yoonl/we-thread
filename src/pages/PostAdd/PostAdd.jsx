@@ -13,7 +13,7 @@ const PostAdd = () => {
   const lastPageHistory = -1;
 
   const createPost = () => {
-    fetch(`${BASE_API_URL}posts`, {
+    fetch(`${BASE_API_URL}posts/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

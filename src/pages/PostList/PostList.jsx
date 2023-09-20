@@ -13,8 +13,8 @@ const PostList = () => {
   const token = localStorage.getItem("token");
 
   const getPostList = async () => {
-    const response = await fetch("/data/listData.json", {
-      // const response = await fetch(`${BASE_API_URL}posts/all`, {
+    // const response = await fetch("/data/listData.json", {
+    const response = await fetch(`${BASE_API_URL}posts/read`, {
       method: "GET",
       headers: {
         authorization: token,
@@ -22,7 +22,7 @@ const PostList = () => {
     });
 
     const result = await response.json();
-    setPostList(result.data);
+    setPostList(result.getThread);
   };
 
   const goToPostAddPage = () => {

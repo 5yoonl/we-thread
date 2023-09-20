@@ -30,7 +30,7 @@ const Signup = () => {
         email: userInfo.email,
         password: userInfo.password,
         nickname: userInfo.nickname,
-        phoneNumber: `${userInfo.firstNumber}${userInfo.firstNumber}`,
+        // phoneNumber: `${userInfo.firstNumber}${userInfo.firstNumber}`,
       }),
     })
       .then((res) => {
@@ -39,7 +39,7 @@ const Signup = () => {
         }
       })
       .then((result) => {
-        if (result.message === "user is created") {
+        if (result.message === "userCreated") {
           navigate("/sign-up-success");
         }
       });

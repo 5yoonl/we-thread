@@ -10,11 +10,11 @@ const Cart = () => {
     const isDuplicate = selectedItems.includes((el) => el.id === item.id);
     const data = [...selectedItems];
 
-    const handleUnCheckedItems = data.filter((el) => el.id !== item.id);
-    if (!isDuplicate) {
-      setSelectedItems((prev) => [...prev, item]);
+    const remainItems = data.filter((el) => el.id !== item.id);
+    if (isDuplicate) {
+      setSelectedItems(remainItems);
     } else {
-      setSelectedItems(handleUnCheckedItems);
+      setSelectedItems((prev) => [...prev, item]);
     }
   };
 

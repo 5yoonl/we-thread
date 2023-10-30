@@ -8,21 +8,21 @@
   .thumbnail {
     width: 128px;
     height: 128px;
-    object-fit: fill;
     border-radius: 12px;
+    object-fit: fill;
   }
 
   .itemInfo {
-    padding: 14px 0 14px 8px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 14px 0 14px 8px;
 
     .productName {
+      margin-bottom: 8px;
       font-size: 18px;
       font-weight: 500;
       color: $grey10;
-      margin-bottom: 8px;
     }
 
     .description {

@@ -5,13 +5,18 @@ import "./Cart.scss";
 const Cart = () => {
   const [cartList, setCartList] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
+  const isAllChecked = cartList.length === selectedItems.length;
 
   const handleClickItem = (item) => {
-    const isDuplicate = selectedItems.includes((el) => el.id === item.id);
-    const data = [...selectedItems];
+    const isSelected = selectedItems.some(({ id }) => id === item.id);
+    const remainItems = cartList.filter(({ id }) => id !== item.id);
 
-    const remainItems = data.filter((el) => el.id !== item.id);
-    if (isDuplicate) {
+    // const newSelectedItems = isSelected
+    //   ? selectedItems.filter(({ id }) => id !== item.id)
+    //   : selectedItems.concat(item);
+    // setSelectedItems(newSelectedItems);
+
+    if (isSelected) {
       setSelectedItems(remainItems);
     } else {
       setSelectedItems((prev) => [...prev, item]);
@@ -19,7 +24,7 @@ const Cart = () => {
   };
 
   const handleCheckAll = () => {
-    if (selectedItems.length === cartList.length) {
+    if (isAllChecked) {
       setSelectedItems([]);
     } else {
       setSelectedItems(cartList);
@@ -35,55 +40,61 @@ const Cart = () => {
   const removeCartItem = (id) => {
     fetch(`https://dummyjson.com/products/${id}`, {
       method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then(() => getCartsByUserId());
+    }).then((res) => {
+      if (res.ok) {
+        getCartsByUserId();
+      } else {
+        alert("처리 중 예기치 못한 오류가 발생했습니다!");
+        return;
+      }
+    });
   };
 
   useEffect(() => {
     getCartsByUserId();
   }, []);
 
-  const isEmpty = cartList.length === 0;
-
-  if (isEmpty) return null;
-
-  const totalPrice =
-    selectedItems
-      .reduce((acc, cur) => cur.quantity * cur.price + acc, 0)
-      .toLocaleString() || 0;
+  const totalPrice = selectedItems
+    .reduce((acc, cur) => cur.quantity * cur.price + acc, 0)
+    .toLocaleString();
 
   return (
     <div className="cart">
-      <div className="cartList">
-        <div>
-          <input
-            checked={selectedItems.length === cartList.length}
-            type="checkbox"
-            id="checkAll"
-            onClick={handleCheckAll}
-          />
-          <label htmlFor="checkAll">전체 선택</label>
-        </div>
+      {cartList.length > 0 ? (
+        <div className="cartList">
+          <div>
+            <input
+              checked={isAllChecked}
+              type="checkbox"
+              id="checkAll"
+              onClick={handleCheckAll}
+            />
+            <label htmlFor="checkAll">전체 선택</label>
+          </div>
 
-        <div className="productList">
-          {cartList.map((item) => {
-            return (
-              <CartItem
-                key={item.id}
-                isChecked={selectedItems.includes((el) => el.id === item.id)}
-                item={item}
-                handleClick={() => handleClickItem(item)}
-                handleDelete={() => removeCartItem(item.id)}
-              />
-            );
-          })}
+          <div className="productList">
+            {cartList.map((item) => {
+              return (
+                <CartItem
+                  key={item.id}
+                  isChecked={selectedItems.some(({ id }) => id === item.id)}
+                  item={item}
+                  handleClick={() => handleClickItem(item)}
+                  handleDelete={() => removeCartItem(item.id)}
+                />
+              );
+            })}
+          </div>
+          <div className="cartTotalInfo">
+            <div>
+              구매 품목 : {cartList.length}개 중 {selectedItems.length}개
+            </div>
+            <div className="remoteController">총가격 : {totalPrice}원</div>
+          </div>
         </div>
-        <div className="cartTotalInfo">
-          <div>구매 품목 : ~개 중 n개</div>
-          <div className="remoteControler">총가격 : {totalPrice}원</div>
-        </div>
-      </div>
+      ) : (
+        <div>장바구니가 비어있습니다</div>
+      )}
     </div>
   );
 };

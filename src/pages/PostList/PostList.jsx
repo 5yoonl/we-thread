@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import Post from "../../components/Post/Post";
 import CtaButton from "../../components/Button/CtaButton";
+import { useNavigate } from "react-router-dom";
 import { BASE_API_URL } from "../../utils/config";
 import "./PostList.scss";
 

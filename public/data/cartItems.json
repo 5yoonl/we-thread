@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "바나 프레소 텀블러",
+      "desc": "분홍색 토끼가 그려져 있어요",
+      "perPrice": 12000,
+      "amount": 1,
+      "productThumbnail": "https://github.com/5yoonl/gitgithub/blob/main/IMG_1616.JPG?raw=true"
+    },
+    {
+      "id": 2,
+      "name": "먹다 남은 과자",
+      "desc": "원래는 더 많이 있었는데 바나가 먹었나봄.",
+      "perPrice": 3600,
+      "amount": 1,
+      "productThumbnail": "https://github.com/5yoonl/gitgithub/blob/main/IMG_1615.JPG?raw=true"
+    },
+    {
+      "id": 3,
+      "name": "생일선물 티아라",
+      "desc": "청소요정이 가만히 있지 않을거에요.",
+      "perPrice": 31200,
+      "amount": 2,
+      "productThumbnail": "https://github.com/5yoonl/gitgithub/blob/main/IMG_1614.JPG?raw=true"
+    },
+    {
+      "id": 4,
+      "name": "SOHO Dock",
+      "desc": "문어발 멀티확장",
+      "perPrice": 178000,
+      "amount": 1,
+      "productThumbnail": "https://github.com/5yoonl/gitgithub/blob/main/IMG_1613.JPG?raw=true"
+    },
+    {
+      "id": 5,
+      "name": "스타벅스 텀블러",
+      "desc": "커피는 역시 스타벅스",
+      "perPrice": 17000,
+      "amount": 1,
+      "productThumbnail": "https://github.com/5yoonl/gitgithub/blob/main/IMG_1612.JPG?raw=true"
+    },
+    {
+      "id": 6,
+      "name": "만들다 만 스티커",
+      "desc": "좀 가져가세요.",
+      "perPrice": 12000,
+      "amount": 1,
+      "productThumbnail": "https://github.com/5yoonl/gitgithub/blob/main/IMG_1607.JPG?raw=true"
+    }
+  ]
+}

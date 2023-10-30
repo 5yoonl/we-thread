@@ -5,6 +5,7 @@ import SignupSuccess from "./pages/SignupSuccess/SignupSuccess";
 import PostList from "./pages/PostList/PostList";
 import PostAdd from "./pages/PostAdd/PostAdd";
 import PostEdit from "./pages/PostEdit/PostEdit";
+import Cart from "./pages/Cart/Cart";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
         <Route path="/post-list" element={<PostList />} />
         <Route path="/post-add" element={<PostAdd />} />
         <Route path="/post-edit/:id" element={<PostEdit />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+.cartItem {
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+
+  .thumbnail {
+    width: 128px;
+    height: 128px;
+    border-radius: 12px;
+    object-fit: fill;
+  }
+
+  .itemInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px 0 14px 8px;
+
+    .productName {
+      margin-bottom: 8px;
+      font-size: 18px;
+      font-weight: 500;
+      color: $grey10;
+    }
+
+    .description {
+      font-size: 16px;
+      font-weight: 400;
+      color: $grey30;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: 600;
+      color: $grey10;
+    }
+  }
+}
